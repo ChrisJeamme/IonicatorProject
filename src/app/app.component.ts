@@ -1,5 +1,3 @@
-import { MainService } from './modules/main/main.service';
-
 import {Component, OnInit} from "@angular/core";
 
 @Component({
@@ -8,13 +6,13 @@ import {Component, OnInit} from "@angular/core";
   styleUrls: ['app.scss'],
   providers: [],
 })
-export class AppComponent implements OnInit
-{
-  constructor()
-  {
+export class AppComponent implements OnInit {
+
+  constructor() {
+
   }
- 
-  ngOnInit()
-  {
+
+  ngOnInit() {
+
   }
 }

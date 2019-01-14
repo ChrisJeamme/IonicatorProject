@@ -31,7 +31,7 @@ moment.locale('fr');
     IonicModule.forRoot(),
     AppRoutingModule,
     IonicStorageModule.forRoot({
-      name: 'ionic-storage',  
+      name: 'ionic-storage',
       driverOrder: ['indexeddb', 'sqlite', 'websql']
     }),
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.PRODUCTION})

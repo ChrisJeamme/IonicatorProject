@@ -1,4 +1,3 @@
-import { MainService } from './main.service';
 import {Component, OnInit} from "@angular/core";
 import { Router } from "@angular/router";
 
@@ -7,38 +6,18 @@ import { Router } from "@angular/router";
   templateUrl: './main.page.html',
   styleUrls: ['./main.page.scss'],
   host: {'class': 'main'},
-  providers: [MainService]
-}) 
+  providers: []
+})
 export class MainPage implements OnInit {
 
-  public text: string;
+  constructor(public router: Router) {}
 
-  constructor(public router: Router, public mainService: MainService)
-  {
-    this.text = "PAR DEFAUT";
-  }
-
-  ngOnInit()
-  {
+  ngOnInit() {
     console.log("INIT MAIN PAGE");
-    
-    this.mainService.getArticle().subscribe(
-      data =>
-      {
-        console.log(data);
-      }
-    );
   }
 
-  goToPage1()
-  {
+  goToPage1(){
     this.router.navigateByUrl("page1");
-  }
-
-  validateIdentifiant(identifiant: string)
-  {
-    // this.text = this.MainService.showText();
-    this.text = identifiant;
   }
 }
 

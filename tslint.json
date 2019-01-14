@@ -4,7 +4,7 @@
     "node_modules/tslint-eslint-rules/dist/rules"
   ],
   "rules": {
-    "no-console": [false, "log"],
+    "no-console": [true, "log"],
     "no-duplicate-imports": true,
     "no-duplicate-variable": true,
     "no-jasmine-focus": true,
