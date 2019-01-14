@@ -1,0 +1,25 @@
+import {Component, OnInit} from "@angular/core";
+import {AppService} from "./app.service";
+import {HttpClient} from "@angular/common/http";
+
+@Component({
+  selector: 'app-root',
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.scss'],
+  providers: [AppService],
+})
+export class AppComponent implements OnInit
+{
+
+  httpClient: HttpClient;
+
+  constructor(public httpClient:HttpClient)
+  {
+
+  }
+
+  ngOnInit()
+  {
+    this.AppService.
+  }
+}

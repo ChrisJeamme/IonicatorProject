@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <span>Main Page</span>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <section >
+    <h4>Bienvenue sur la main page</h4>
+  </section>
+
+  <ion-item>
+    <ion-input type="text" placeholder="identifiant" #identifiant></ion-input>
+  </ion-item>
+  
+  <!-- <ion-button (click)="showText()">Afficher mon texte</ion-button> -->
+  <ion-button (click)="validateIdentifiant(identifiant.value)">Afficher mon texte</ion-button>
+  <br />
+  <div>{{ text }}</div>
+</ion-content>
