@@ -13,13 +13,19 @@ import {RouteReuseStrategy} from "@angular/router";
 import localeFr from '@angular/common/locales/fr';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { LoginComponent } from './login/login.component';
+import { PageComponent } from './page/page.component';
+import { LoginPipe } from './modules/login.pipe';
 
 registerLocaleData(localeFr);
 moment.locale('fr');
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    PageComponent,
+    LoginPipe
   ],
   imports: [
     FormsModule,
