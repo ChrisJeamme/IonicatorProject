@@ -16,18 +16,6 @@ export class Page1Service {
 
   persistArticles(articles){
     return this.storage.set("articles", articles);
-
-@Injectable({
-    providedIn: "root"
   }
-)
-export class Page1Service {
-
-  constructor(){}
-
-  public monService(){
-
-
-  }
-
+  
 }
