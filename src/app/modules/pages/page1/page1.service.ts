@@ -17,5 +17,5 @@ export class Page1Service {
   persistArticles(articles){
     return this.storage.set("articles", articles);
   }
-
+  
 }
