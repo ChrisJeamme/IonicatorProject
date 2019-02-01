@@ -30,5 +30,4 @@ const concatRoutes: Routes = [...defaultsRoutes] as Routes;
     exports: [RouterModule]
 })
 export class AppRoutingModule
-{
-}
+{ }

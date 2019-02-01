@@ -17,13 +17,22 @@ export class MainPage implements OnInit
 
     ngOnInit()
     {
-        console.log("INIT MAIN PAGE"+localStorage.getItem("identifiant"));
-        if (localStorage.getItem("identifiant") === null)
+        if (localStorage.getItem("identifiant") == null)
         {
-            console.log("Salut")
-            this.router.navigateByUrl("login")
+            console.log("Non connecté, connexion nécéssaire")
         }
-        this.identifiant = localStorage.getItem("identifiant");
+        else
+            this.identifiant = localStorage.getItem("identifiant");
+    }
+
+    ngOnChanges(changes: SimpleChanges): void
+    {
+        //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+        //Add '${implements OnChanges}' to the class.
+
+        console.log('Changements');
+        console.log(changes);
+        
     }
 
     goToPage1()
@@ -36,11 +45,15 @@ export class MainPage implements OnInit
         this.router.navigateByUrl("login");
     }
 
+    connected()
+    {
+        return localStorage.hasOwnProperty('identifiant');
+    }
+
     logout()
     {
         console.log("Déconnexion")
-        localStorage.setItem("identifiant",null);
-        this.router.navigateByUrl("main");
+        localStorage.removeItem('identifiant')
     }
 }
 
