@@ -1,3 +1,17 @@
-<p>
-  login works!
-</p>
+<ion-header>
+    <ion-toolbar>
+        <span>Login</span>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <section>
+        <h4>Veuillez saisir votre pseudo</h4>
+    </section>
+
+    <section>
+        <ion-item>
+            <ion-input type="text" placeholder="Name" #name></ion-input>
+        </ion-item>
+        <ion-button (click)="validateName(name.value)">Valider prénom</ion-button>
+    </section>
+</ion-content>

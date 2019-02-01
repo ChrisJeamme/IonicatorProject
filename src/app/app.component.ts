@@ -1,20 +1,23 @@
-import {Component, OnInit} from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.scss'],
-  providers: [],
+    selector: 'app-root',
+    templateUrl: 'app.component.html',
+    styleUrls: ['app.scss'],
+    providers: [],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit
+{
 
-  constructor() {
+    constructor()
+    {
 
-  }
+    }
 
-  ngOnInit() {
+    ngOnInit()
+    {
 
-    localStorage.setItem("identifiant", "Mickael");
+        // localStorage.setItem("identifiant", "Mickael");
 
-  }
+    }
 }

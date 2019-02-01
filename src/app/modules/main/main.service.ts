@@ -1,11 +1,13 @@
-import {Injectable} from "@angular/core";
+import { Injectable } from "@angular/core";
 
 @Injectable()
-export class MainService {
+export class MainService
+{
 
-  constructor(){}
+    constructor() { }
 
-  getStatus(){
-    return "Mon Status";
-  }
+    getStatus()
+    {
+        return "Mon Status";
+    }
 }
