@@ -6,10 +6,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class AppService
 {
-
-
     constructor(public httpclient: HttpClient)
     {
     }
-
 }

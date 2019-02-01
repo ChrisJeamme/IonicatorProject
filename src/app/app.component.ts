@@ -20,4 +20,9 @@ export class AppComponent implements OnInit
         // localStorage.setItem("identifiant", "Mickael");
 
     }
+    
+    connected()
+    {
+        return localStorage.hasOwnProperty('identifiant');
+    }
 }

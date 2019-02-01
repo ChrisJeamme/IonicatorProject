@@ -25,16 +25,6 @@ export class MainPage implements OnInit
             this.identifiant = localStorage.getItem("identifiant");
     }
 
-    ngOnChanges(changes: SimpleChanges): void
-    {
-        //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
-        //Add '${implements OnChanges}' to the class.
-
-        console.log('Changements');
-        console.log(changes);
-        
-    }
-
     goToPage1()
     {
         this.router.navigateByUrl("page1");
