@@ -4,14 +4,14 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-    <section>
-        <h4>Veuillez saisir votre pseudo</h4>
-    </section>
-
-    <section>
-        <ion-item>
-            <ion-input type="text" placeholder="Name" #name></ion-input>
-        </ion-item>
-        <ion-button (click)="validateName(name.value)">Valider prénom</ion-button>
-    </section>
+    <ion-row class="center-layout">
+        <ion-col text-center>
+            <ion-item>
+                <ion-icon name="person"></ion-icon>
+                <ion-label position="floating"> Votre pseudo</ion-label>
+                <ion-input type="texte" #name></ion-input>
+            </ion-item>
+            <ion-button fill="outline" (click)="validateName(name.value)">Valider</ion-button>
+        </ion-col>
+    </ion-row>
 </ion-content>
