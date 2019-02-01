@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Page1Service } from "./page1.service";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'page1',
@@ -15,7 +16,7 @@ export class Page1Page implements OnInit
 
     public toShow: boolean;
 
-    constructor(public page1Service: Page1Service)
+    constructor(public page1Service: Page1Service, public router: Router)
     {
         this.toShow = true;
     }

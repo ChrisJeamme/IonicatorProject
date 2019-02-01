@@ -19,6 +19,6 @@ export class LoginPage implements OnInit
     {
         console.log(name);
         localStorage.setItem("identifiant", name);
-        this.router.navigateByUrl("main")
+        this.router.navigateByUrl("page1")
     }
 }
