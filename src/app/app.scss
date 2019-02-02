@@ -24,7 +24,34 @@
     margin: auto;
 }
 
+.flex
+{
+    display: flex;
+}
+
+.space-between
+{
+    justify-content: space-between;
+}
+
 .maxheight
 {
     height: 100vh;
 }
+
+.page-title
+{
+    font-size: 1.5em;
+}
+
+// section
+// {
+//     // background-image: url(../assets/login_background.jpg);
+//     // background-attachment: fixed;
+//     // background-color: #81D4FA;
+// }
+
+// ion-toolbar
+// {
+//     background-color: #29B6F6 !important;
+// }
