@@ -14,20 +14,26 @@ export class AppComponent implements OnInit
 
     ngOnInit()
     {
-        if (localStorage.hasOwnProperty('identifiant'))
-        {
-          this.router.navigateByUrl("page1");
-        }
-        else
-        {
-          this.router.navigateByUrl("login");
-        }
-        // localStorage.setItem("identifiant", "Mickael");
-
+        this.identificationRedirection();
     }
     
     connected()
     {
         return localStorage.hasOwnProperty('identifiant');
+    }
+
+    identificationRedirection()
+    {
+        if(this.connected())
+          this.router.navigateByUrl("page1");
+        else
+          this.router.navigateByUrl("login");
+    }
+
+    public logout()
+    {
+        console.log("Déconnexion");
+        localStorage.removeItem('identifiant');
+        this.router.navigateByUrl("login");
     }
 }

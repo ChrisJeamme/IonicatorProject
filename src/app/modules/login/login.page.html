@@ -1,17 +1,17 @@
 <ion-header>
-    <ion-toolbar>
-        <span>Login</span>
+    <ion-toolbar color="dark">
+        <span class="page-title">Enregistrement</span>
     </ion-toolbar>
 </ion-header>
 <ion-content>
     <ion-row class="center-layout">
         <ion-col text-center>
             <ion-item>
-                <ion-icon name="person"></ion-icon>
-                <ion-label position="floating"> Votre pseudo</ion-label>
+                <ion-icon color="dark" name="person"></ion-icon>
+                <ion-label color="dark" position="floating"> Votre pseudo</ion-label>
                 <ion-input type="texte" #name></ion-input>
             </ion-item>
-            <ion-button fill="outline" (click)="validateName(name.value)">Valider</ion-button>
+            <ion-button color="dark" fill="outline" (click)="validateName(name.value)">Valider</ion-button>
         </ion-col>
     </ion-row>
 </ion-content>
