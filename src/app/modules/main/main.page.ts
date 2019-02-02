@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 @Component({
     selector: 'main',
     templateUrl: './main.page.html',
-    styleUrls: ['./main.page.scss'],
+    styleUrls: ['../../app.scss', './main.page.scss'],
     host: { 'class': 'main' },
     providers: []
 })
@@ -42,8 +42,9 @@ export class MainPage implements OnInit
 
     logout()
     {
-        console.log("Déconnexion")
-        localStorage.removeItem('identifiant')
+        console.log("Déconnexion");
+        localStorage.removeItem('identifiant');
+        this.router.navigateByUrl("login");
     }
 }
 

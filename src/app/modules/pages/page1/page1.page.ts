@@ -5,7 +5,7 @@ import { Router } from "@angular/router";
 @Component({
     selector: 'page1',
     templateUrl: './page1.page.html',
-    styleUrls: ['./page1.page.scss'],
+    styleUrls: ['../../../app.scss', './page1.page.scss'],
     host: { 'class': 'page1' },
     providers: [Page1Service]
 })
@@ -14,12 +14,8 @@ export class Page1Page implements OnInit
 
     public articles: Array<any>;
 
-    public toShow: boolean;
-
     constructor(public page1Service: Page1Service, public router: Router)
-    {
-        this.toShow = true;
-    }
+    { }
 
     ngOnInit()
     {
@@ -38,6 +34,13 @@ export class Page1Page implements OnInit
                 );
             }
         );
+    }
+
+    logout()
+    {
+        console.log("Déconnexion");
+        localStorage.removeItem('identifiant');
+        this.router.navigateByUrl("login");
     }
 }
 
