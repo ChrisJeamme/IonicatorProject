@@ -29,9 +29,14 @@
     display: flex;
 }
 
-.space-between
+.space-around
 {
     justify-content: space-between;
+}
+
+.align-center
+{
+    align-content: center;
 }
 
 .maxheight
@@ -42,6 +47,11 @@
 .page-title
 {
     font-size: 1.5em;
+}
+
+.header *
+{
+    margin: auto;
 }
 
 // section
