@@ -10,14 +10,14 @@
 </ion-header>
 <ion-content>
     <section>
-        <div *ngFor="let article of articles">
-            <ion-card>
+        <div *ngFor="let article of tenArticles()">
+            <ion-card id="{{article.id}}">
                 <ion-item>
                     <ion-label>{{article.title}}</ion-label>
-                    <ion-button color="secondary" slot="end">
+                    <ion-button action color="secondary" slot="end">
                         <ion-icon name="save"></ion-icon>
                     </ion-button>
-                    <ion-button color="primary" slot="end">
+                    <ion-button href="article" color="primary" slot="end">
                         <ion-icon name="arrow-forward"></ion-icon>
                     </ion-button>
                 </ion-item>

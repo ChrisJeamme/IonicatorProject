@@ -13,6 +13,7 @@ export class Page1Page implements OnInit
 {
 
     public articles: Array<any>;
+    private NUMBER_OF_ARTICLE_ON_MAIN_PAGE = 10;
 
     constructor(public page1Service: Page1Service, public router: Router)
     { }
@@ -34,6 +35,11 @@ export class Page1Page implements OnInit
                 );
             }
         );
+    }
+
+    tenArticles()
+    {
+        return this.articles.slice(0, this.NUMBER_OF_ARTICLE_ON_MAIN_PAGE);
     }
 
     logout()
