@@ -1,34 +1,32 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Router } from "@angular/router";
-import { ArticleService } from "./article.service";
-import { Page1Service } from "../pages/page1/page1.service";
+import { ArticlesService } from "../articles/articles.service";
 
 @Component({
     selector: 'article',
     templateUrl: './article.page.html',
     styleUrls: ['../../app.scss', './article.page.scss'],
     host: { 'class': 'article' },
-    providers: [Page1Service]
+    providers: [ArticlesService]
 })
 export class ArticlePage implements OnInit
 {
     @Input() article: any;
 
-    constructor(public articleService: ArticleService,
-                public page1Service: Page1Service,
+    constructor(public articlesService: ArticlesService,
                 public router: Router)
     { }
 
     ngOnInit()
     {
-        this.articleService.getSelectedArticleId().then(
+        this.articlesService.getSelectedArticleId().then(
         id =>
         {
             if(id == null || id == undefined)
             {
                 console.log("Erreur : Pas d'id défini")
             }
-            this.page1Service.getArticle(id, this.displayArticle, this.displayErrorGetArticle);
+            this.articlesService.getArticle(id, this.displayArticle, this.displayErrorGetArticle);
         });
     }
 
@@ -58,17 +56,19 @@ export class ArticlePage implements OnInit
     {
         document.querySelector("#content").innerHTML =
         `
-        <ion-card>
-            <ion-card-header>
-                <ion-card-subtitle>Article</ion-card-subtitle>
-                <ion-card-title>`+article.title+`</ion-card-title>
-            </ion-card-header>
+        <div class="articleBlock">
+            <ion-card>
+                <ion-card-header>
+                    <ion-card-subtitle>Article</ion-card-subtitle>
+                    <ion-card-title>`+article.title+`</ion-card-title>
+                </ion-card-header>
 
-            <ion-card-content>
-                <img src="assets/illustration.bmp"></img>
-                `+article.body+`
-            </ion-card-content>
-        </ion-card>
+                <ion-card-content>
+                    <ion-img src="assets/illustration.bmp"></ion-img>
+                    `+article.body+`
+                </ion-card-content>
+            </ion-card>
+        </div>
         `;
     }
 

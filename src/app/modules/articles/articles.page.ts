@@ -1,34 +1,32 @@
 import { Component, OnInit } from "@angular/core";
-import { Page1Service } from "./page1.service";
 import { Router } from "@angular/router";
-import { ArticleService } from "../../article/article.service";
+import { ArticlesService } from "./articles.service";
 
 @Component({
-    selector: 'page1',
-    templateUrl: './page1.page.html',
-    styleUrls: ['../../../app.scss', './page1.page.scss'],
-    host: { 'class': 'page1' },
-    providers: [Page1Service]
+    selector: 'articles',
+    templateUrl: './articles.page.html',
+    styleUrls: ['../../app.scss', './articles.page.scss'],
+    host: { 'class': 'articles' },
+    providers: [ArticlesService]
 })
-export class Page1Page implements OnInit
+export class ArticlesPage implements OnInit
 {
 
     public articles: Array<any>;
     private NUMBER_OF_ARTICLE_ON_MAIN_PAGE = 10;
 
-    constructor(public page1Service: Page1Service,
-                public router: Router,
-                public articleService: ArticleService)
+    constructor(public router: Router,
+                public articlesService: ArticlesService)
     { }
 
     ngOnInit()
     {
-        this.page1Service.getArticles().subscribe(
+        this.articlesService.getArticles().subscribe(
             (data: Array<any>) =>
             {
                 this.articles = data;
 
-                this.page1Service.persistArticles(data).then(
+                this.articlesService.persistArticles(data).then(
                     ok =>
                     {
                         console.log("Les articles ont bien été stockés");
@@ -40,7 +38,7 @@ export class Page1Page implements OnInit
 
     goToArticle(id: string)
     {
-        this.articleService.setSelectedArticleId(id);
+        this.articlesService.setSelectedArticleId(id);
         this.router.navigateByUrl("article");
     }
 

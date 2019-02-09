@@ -1,9 +1,9 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import { Page1Page } from "./page1.page";
 import { CommonModule } from "@angular/common";
 import { IonicModule } from "@ionic/angular";
-import { ArticleService } from "../../article/article.service";
+import { ArticlesService } from "./articles.service";
+import { ArticlesPage } from "./articles.page";
 
 @NgModule({
     imports: [
@@ -12,14 +12,14 @@ import { ArticleService } from "../../article/article.service";
         RouterModule.forChild([
             {
                 path: '',
-                component: Page1Page
+                component: ArticlesPage
             }
         ])
     ],
-    providers: [ArticleService],
-    bootstrap: [Page1Page],
-    declarations: [Page1Page]
+    providers: [ArticlesService],
+    bootstrap: [ArticlesPage],
+    declarations: [ArticlesPage]
 })
-export class Page1PageModule
+export class ArticlesPageModule
 {
 }

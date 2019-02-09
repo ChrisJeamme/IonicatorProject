@@ -1,10 +1,9 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Storage } from "@ionic/storage";
-import { ArticleService } from "../../article/article.service";
 
 @Injectable()
-export class Page1Service
+export class ArticlesService
 {
     constructor(public httpclient: HttpClient, public storage: Storage)
     {
@@ -39,5 +38,15 @@ export class Page1Service
             }
             error("Article non trouvé");
         });
+    }
+
+    public getSelectedArticleId()
+    {
+        return this.storage.get("selected_article_id");
+    }
+    
+    public setSelectedArticleId(id: string)
+    {
+        this.storage.set("selected_article_id",id);
     }
 }

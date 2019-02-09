@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const defaultsRoutes: Routes = [
-    { path: '', redirectTo: 'page1', pathMatch: 'full' },
+    { path: '', redirectTo: 'articles', pathMatch: 'full' },
     {
-        path: 'page1',
-        loadChildren: '../modules/pages/page1/page1.page.module#Page1PageModule'
+        path: 'articles',
+        loadChildren: '../modules/articles/articles.page.module#ArticlesPageModule'
     },
     {
         path: 'login',

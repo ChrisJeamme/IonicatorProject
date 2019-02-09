@@ -1,4 +1,4 @@
-import { Page1Service } from "./page1.service";
+import { ArticlesService } from "./articles.service";
 import { HttpClient } from "@angular/common/http";
 import createMockInstance from "jest-create-mock-instance";
 import { Storage } from "@ionic/storage";
@@ -8,7 +8,7 @@ import { TestUtil } from "../../../test/util.test";
 
 describe('Service: Page Service', () =>
 {
-    let service: Page1Service;
+    let service: ArticlesService;
     let httpClient: HttpClient = createMockInstance(HttpClient);
     let storage: Storage = createMockInstance(Storage);
 
@@ -21,7 +21,7 @@ describe('Service: Page Service', () =>
     {
         httpClient = createMockInstance(HttpClient);
         storage = createMockInstance(Storage);
-        service = new Page1Service(httpClient, storage);
+        service = new ArticlesService(httpClient, storage);
 
         spyOn(service, "getArticles").and.returnValue(of(mock));
         spyOn(service, "persistArticles").and.returnValue(TestUtil.promise(true));
