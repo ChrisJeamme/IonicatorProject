@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Page1Service } from "./page1.service";
 import { Router } from "@angular/router";
+import { ArticleService } from "../../article/article.service";
 
 @Component({
     selector: 'page1',
@@ -15,12 +16,16 @@ export class Page1Page implements OnInit
     public articles: Array<any>;
     private NUMBER_OF_ARTICLE_ON_MAIN_PAGE = 10;
 
-    constructor(public page1Service: Page1Service, public router: Router)
+    constructor(public page1Service: Page1Service,
+                public router: Router,
+                public articleService: ArticleService)
     { }
 
     ngOnInit()
     {
         console.log("INIT PAGE1");
+        
+        console.log(this.articleService.getSelectedArticleId());
 
         this.page1Service.getArticles().subscribe(
             (data: Array<any>) =>
@@ -35,6 +40,26 @@ export class Page1Page implements OnInit
                 );
             }
         );
+    }
+
+    // Test //////////////////
+    logService()
+    {
+        console.log(this.articleService.getSelectedArticleId());
+    }
+    /////////////////////////
+
+    goToArticle(id: string)
+    {
+        if(this.articles[parseInt(id)] != undefined)
+        {
+            this.articleService.setSelectedArticleId(id);
+            this.router.navigateByUrl("article");
+        }
+        else
+        {
+            this.articleService.setSelectedArticleId(undefined);
+        }
     }
 
     tenArticles()

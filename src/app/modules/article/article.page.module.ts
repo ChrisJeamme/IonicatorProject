@@ -3,6 +3,7 @@ import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { IonicModule } from "@ionic/angular";
 import { ArticlePage } from "./article.page";
+import { ArticleService } from "./article.service";
 
 @NgModule({
     imports: [
@@ -15,6 +16,7 @@ import { ArticlePage } from "./article.page";
             }
         ])
     ],
+    providers: [ArticleService],
     bootstrap: [ArticlePage],
     declarations: [ArticlePage]
 })

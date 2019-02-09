@@ -5,10 +5,18 @@
             <ion-button color="light" fill="outline" (click)="logout()">
                 <ion-icon name="log-out"></ion-icon> Déconnexion
             </ion-button>
+
+            <!-- Test -->
+            <ion-button (click)="logService()" size="large" color="secondary" slot="end">
+                <ion-icon name="flame"></ion-icon>
+            </ion-button>
+            <!--  -->
         </div>
     </ion-toolbar>
 </ion-header>
 <ion-content>
+
+    
     <!-- <section>
         <div *ngFor="let article of articles">
             <ion-card>
