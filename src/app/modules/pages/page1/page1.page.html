@@ -10,11 +10,6 @@
 </ion-header>
 <ion-content>
     <section>
-        <!-- Test -->
-        <ion-button (click)="logService()" size="large" color="secondary" slot="end">
-            <ion-icon name="flame"></ion-icon>
-        </ion-button>
-        <!--  -->
 
         <div *ngFor="let article of tenArticles()">
             <ion-card id="article_{{article.id}}">
