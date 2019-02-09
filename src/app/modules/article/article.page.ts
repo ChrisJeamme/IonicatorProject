@@ -42,7 +42,6 @@ export class ArticlePage implements OnInit
     {
         document.querySelector("#content").innerHTML =
         `
-        <ion-button fill="outline" slot="end" expand="full" color="dark" (click)="goToArticles()">Retour</ion-button>
         <ion-card color="danger">
             <ion-card-header>
                 <ion-card-title>Erreur</ion-card-title>
@@ -59,7 +58,6 @@ export class ArticlePage implements OnInit
     {
         document.querySelector("#content").innerHTML =
         `
-        <ion-button fill="outline" slot="end" expand="full" color="dark" (click)="goToArticles()">Retour</ion-button>
         <ion-card>
             <ion-card-header>
                 <ion-card-subtitle>Article</ion-card-subtitle>
