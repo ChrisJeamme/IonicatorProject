@@ -14,6 +14,10 @@ const defaultsRoutes: Routes = [
     {
         path: 'login',
         loadChildren: '../modules/login/login.page.module#LoginPageModule'
+    },
+    {
+        path: 'article',
+        loadChildren: '../modules/article/article.page.module#ArticlePageModule'
     }
 
 ];
