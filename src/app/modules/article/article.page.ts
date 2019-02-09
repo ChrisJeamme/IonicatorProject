@@ -36,7 +36,7 @@ export class ArticlePage implements OnInit
     {
         console.log("allo")
         this.router.navigateByUrl("page1");
-    }
+    } 
 
     displayErrorGetArticle(error)
     {
