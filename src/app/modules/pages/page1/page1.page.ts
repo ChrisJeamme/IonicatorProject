@@ -23,10 +23,6 @@ export class Page1Page implements OnInit
 
     ngOnInit()
     {
-        console.log("INIT PAGE1");
-        
-        console.log(this.articleService.getSelectedArticleId());
-
         this.page1Service.getArticles().subscribe(
             (data: Array<any>) =>
             {
@@ -42,24 +38,10 @@ export class Page1Page implements OnInit
         );
     }
 
-    // Test //////////////////
-    logService()
-    {
-        console.log(this.articleService.getSelectedArticleId());
-    }
-    /////////////////////////
-
     goToArticle(id: string)
     {
-        if(this.articles[parseInt(id)] != undefined)
-        {
-            this.articleService.setSelectedArticleId(id);
-            this.router.navigateByUrl("article");
-        }
-        else
-        {
-            this.articleService.setSelectedArticleId(undefined);
-        }
+        this.articleService.setSelectedArticleId(id);
+        this.router.navigateByUrl("article");
     }
 
     tenArticles()
