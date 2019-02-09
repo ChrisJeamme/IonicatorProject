@@ -14,6 +14,14 @@ ion-content
     transform: translate3d(0, 0, 0);
 }
 
+.first
+{
+  width: 20em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 .page1
 {
 
