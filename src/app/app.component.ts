@@ -24,9 +24,7 @@ export class AppComponent implements OnInit
 
     identificationRedirection()
     {
-        if(this.connected())
-          this.router.navigateByUrl("page1");
-        else
+        if(!this.connected())
           this.router.navigateByUrl("login");
     }
 
