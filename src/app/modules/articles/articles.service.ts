@@ -75,10 +75,24 @@ export class ArticlesService
         }
     }
 
-    articleStored(article)
+    articleStored(articleToTest)
     {
-        //TODO Vérifier si pas déjà stored
-        return false;
+        this.storage.get("articles").then(
+            articles =>
+            {
+                if(articles == undefined || articles == null)
+                    return false;
+
+                let deleted = false;
+                for(let article in articles)
+                {
+                    if(articles[article].id == articleToTest.id)
+                    {
+                        return true;
+                    }
+                }
+            }
+        );
     }
 
     persistArticles(articles)
