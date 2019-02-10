@@ -39,6 +39,28 @@ export class ArticlesService
         }
     }
 
+    deleteAnArticle(article, callback)
+    {
+        if(!this.articleStored(article)) //TODO A modifier après avoir fait la fonction
+        {
+            this.storage.get("articles").then(
+                articles =>
+                {
+                    if(articles == undefined || articles == null)
+                        articles = Array<any>();
+
+                    let indexToDelete = articles.indexOf(article);
+                    articles.splice(indexToDelete,indexToDelete);
+
+                    console.log("Article supprimé du cache");
+
+                    this.storage.set("articles",articles);
+                    callback(article.id);
+                }
+            );
+        }
+    }
+
     articleStored(article)
     {
         //TODO Vérifier si pas déjà stored

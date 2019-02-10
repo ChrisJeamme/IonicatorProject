@@ -47,10 +47,15 @@ export class ArticlesPage implements OnInit
                 this.articlesService.getArticlesFromStorage().then(
                 articles =>
                 {
-                    for(let article in articles)
+                    if(document.querySelectorAll(".save_toggle").length != 0)
                     {
-                        if(document.querySelector(".save_button_"+articles[article].id) != undefined)
-                            document.querySelector(".save_button_"+articles[article].id).disabled = true;
+                        for(let article in articles)
+                        {
+                            let toggle:HTMLIonToggleElement = document.querySelector(".save_toggle_"+articles[article].id);
+
+                            if(toggle.id != undefined)
+                                toggle.checked = true;
+                        }
                     }
                 });
             },
@@ -77,6 +82,7 @@ export class ArticlesPage implements OnInit
             }
         );
 
+
         // document.querySelector(".save_button").onClick(console.log("a"))
         // (click)="saveArticle(article)"
     }
@@ -87,20 +93,49 @@ export class ArticlesPage implements OnInit
         this.router.navigateByUrl("article");
     }
 
-    saveArticle(article)
-    {   //TODO Transformer button en toggle
-        this.articlesService.persistAnArticle(article, this.activeSaveButton);
+    toggleSaveArticle(article)
+    {
+        let toggle:HTMLIonToggleElement = document.querySelector(".save_toggle_"+article.id);
+
+        if(toggle != undefined)
+        {
+            if(toggle.checked)
+            {
+                // To save
+                console.log("To Save")
+                this.articlesService.persistAnArticle(article, this.enableSaveToggle);
+            }
+            else
+            {
+                // To delete
+                console.log("To Delete")
+                this.articlesService.deleteAnArticle(article, this.disableSaveToggle);
+            }
+        }
+        console.log("article "+article)
     }
 
     activeSaveButton(id)
     {
-        if(document.querySelector(".save_button_"+id+"")!=undefined)
-            document.querySelector(".save_button_"+id+"").disabled = true;
+        let button:HTMLButtonElement = document.querySelector(".save_button_"+id+"");
+
+        if(button!=undefined)
+            button.disabled = true;
         else
         {
             this.presentAlert("Erreur","","Erreur : Id du bouton de sauvegarde introuvable");
             console.error("Erreur : Id du bouton de sauvegarde introuvable");
         }
+    }
+
+    enableSaveToggle(id)
+    {
+        console.log("enableToggle")
+    }
+
+    disableSaveToggle(id)
+    {
+        console.log("disableToggle")
     }
 
     tenArticles()
