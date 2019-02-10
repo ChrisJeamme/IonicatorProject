@@ -42,7 +42,7 @@ export class ArticlesPage implements OnInit
             (data: Array<any>) =>
             {
                 // Récupération des articles distants
-                this.articles = data.splice(this.NUMBER_OF_ARTICLE_ON_MAIN_PAGE);
+                this.articles = data;
 
                 // Coche les articles déjà enregistrés
                 this.articlesService.getArticlesFromStorage().then(

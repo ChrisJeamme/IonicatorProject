@@ -45,7 +45,7 @@ export class ArticlesService
                 if(articles == undefined || articles == null)
                 {
                     callback(articleToDelete.id);
-                    presentAlert("Erreur","Suppression","Impossible de supprimer l'article");
+                    // presentAlert("Erreur","Suppression","Impossible de supprimer l'article");
                 }
 
                 let deleted = false;
@@ -61,7 +61,7 @@ export class ArticlesService
                 if(!deleted)
                 {
                     callback(articleToDelete.id);
-                    presentAlert("Erreur","Suppression","Impossible de supprimer l'article");
+                    // presentAlert("Erreur","Suppression","Impossible de supprimer l'article");
                 }
                 
                 this.storage.set("articles",articles);
