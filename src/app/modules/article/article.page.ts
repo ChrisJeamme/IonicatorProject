@@ -32,10 +32,9 @@ export class ArticlePage implements OnInit
 
     goToArticles()
     {
-        console.log("allo")
-        this.router.navigateByUrl("page1");
-    } 
-
+        this.router.navigateByUrl("articles");
+    }
+    
     displayErrorGetArticle(error)
     {
         document.querySelector("#content").innerHTML =
@@ -64,7 +63,6 @@ export class ArticlePage implements OnInit
                 </ion-card-header>
 
                 <ion-card-content>
-                    <ion-img src="assets/illustration.bmp"></ion-img>
                     `+article.body+`
                 </ion-card-content>
             </ion-card>
