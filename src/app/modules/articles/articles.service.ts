@@ -33,31 +33,45 @@ export class ArticlesService
                     console.log("Nouvel article ajouté au cache");
 
                     this.storage.set("articles",articles);
-                    callback(article.id);
                 }
             );
         }
+        else
+        {            
+            callback(article.id);
+        }
     }
 
-    deleteAnArticle(article, callback)
+    deleteAnArticle(articleToDelete, callback)
     {
-        if(!this.articleStored(article)) //TODO A modifier après avoir fait la fonction
+        if(!this.articleStored(articleToDelete)) //TODO A modifier après avoir fait la fonction
         {
             this.storage.get("articles").then(
                 articles =>
                 {
                     if(articles == undefined || articles == null)
-                        articles = Array<any>();
+                        callback(articleToDelete.id);
 
-                    let indexToDelete = articles.indexOf(article);
-                    articles.splice(indexToDelete,indexToDelete);
-
-                    console.log("Article supprimé du cache");
-
+                    let deleted = false;
+                    for(let article in articles)
+                    {
+                        if(articles[article].id == articleToDelete.id)
+                        {
+                            articles.splice(article,article);
+                            console.log("Article supprimé du cache");
+                            deleted = true;
+                        }
+                    }
+                    if(!deleted)
+                        callback(articleToDelete.id);
+                    
                     this.storage.set("articles",articles);
-                    callback(article.id);
                 }
             );
+        }
+        else
+        {
+            callback(articleToDelete.id);
         }
     }
 
