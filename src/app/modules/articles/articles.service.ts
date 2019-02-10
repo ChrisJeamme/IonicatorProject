@@ -19,6 +19,32 @@ export class ArticlesService
         return this.storage.get("articles");
     }
 
+    persistAnArticle(article, callback)
+    {
+        if(!this.articleStored(article))
+        {
+            this.storage.get("articles").then(
+                articles =>
+                {
+                    if(articles == undefined || articles == null)
+                        articles = Array<any>();
+
+                    articles.push(article);
+                    console.log("Nouvel article ajouté au cache");
+
+                    this.storage.set("articles",articles);
+                    callback(article.id);
+                }
+            );
+        }
+    }
+
+    articleStored(article)
+    {
+        //TODO Vérifier si pas déjà stored
+        return false;
+    }
+
     persistArticles(articles)
     {
         return this.storage.set("articles", articles.sort((a,b)=>a.id>b.id));
