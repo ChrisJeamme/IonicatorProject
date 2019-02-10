@@ -25,13 +25,13 @@ export class ArticlesPage implements OnInit
 
     async presentAlert(title:string, subtitle:string, message:string)
     {
-        const alert = await this.alertController.create({
-          header: title,
-          subHeader: subtitle,
-          message: message,
-          buttons: ['OK']
+        const alert = await this.alertController.create(
+        {
+            header: title,
+            subHeader: subtitle,
+            message: message,
+            buttons: ['OK']
         });
-    
         await alert.present();
     }
 
@@ -40,39 +40,70 @@ export class ArticlesPage implements OnInit
         this.articlesService.getArticles().subscribe(
             (data: Array<any>) =>
             {
+                // Récupération des articles distants
                 this.articles = data;
 
-                this.articlesService.persistArticles(data).then(
-                    ok =>
+                // Coche les articles déjà enregistrés
+                this.articlesService.getArticlesFromStorage().then(
+                articles =>
+                {
+                    for(let article in articles)
                     {
-                        console.log("Les articles ont bien été stockés");
+                        if(document.querySelector(".save_button_"+articles[article].id) != undefined)
+                            document.querySelector(".save_button_"+articles[article].id).disabled = true;
                     }
-                );
+                });
             },
             error =>
             {
                 let offlineArticles = this.articlesService.getArticlesFromStorage().then(
                     offlineArticles =>
                     {
-                        console.log("(Mode offline) Articles trouvés dans le cache")
-                        this.presentAlert("Erreur","Récupération des articles","En raison d'une impossibilité de récupérer les articles, nous vous présentons les articles en cache");
-                        this.alert = "Mode hors-ligne";
-                        this.articles = offlineArticles;
+                        if(offlineArticles == null)
+                        {
+                            console.log("(Mode offline) Aucun article trouvé dans le cache")
+                            this.alert = "Mode hors-ligne";
+                            this.presentAlert("Erreur","Récupération des articles","Aucun article disponible");
+                        }
+                        else
+                        {
+                            console.log("(Mode offline) Articles trouvés dans le cache")
+                            this.presentAlert("Erreur","Récupération des articles","En raison d'une impossibilité de récupérer les articles, nous vous présentons les articles en cache");
+                            this.alert = "Mode hors-ligne";
+                            this.articles = offlineArticles;
+                        }
                     },
                     error =>
                     {
-                        console.log("(Mode offline) Aucun article trouvé dans le cache")
-                        this.alert = "a";
                     }
                 );
             }
         );
+
+        // document.querySelector(".save_button").onClick(console.log("a"))
+        // (click)="saveArticle(article)"
     }
 
     goToArticle(id: string)
     {
         this.articlesService.setSelectedArticleId(id);
         this.router.navigateByUrl("article");
+    }
+
+    saveArticle(article)
+    {   //TODO Transformer button en toggle
+        this.articlesService.persistAnArticle(article, this.activeSaveButton);
+    }
+
+    activeSaveButton(id)
+    {
+        if(document.querySelector(".save_button_"+id+"")!=undefined)
+            document.querySelector(".save_button_"+id+"").disabled = true;
+        else
+        {
+            this.presentAlert("Erreur","","Erreur : Id du bouton de sauvegarde introuvable");
+            console.error("Erreur : Id du bouton de sauvegarde introuvable");
+        }
     }
 
     tenArticles()
