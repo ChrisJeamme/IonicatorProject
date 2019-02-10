@@ -17,8 +17,7 @@ export class LoginPage implements OnInit
 
     validateName(name: string)
     {
-        console.log(name);
         localStorage.setItem("identifiant", name);
-        this.router.navigateByUrl("page1")
+        this.router.navigateByUrl("articles")
     }
 }
