@@ -9,11 +9,13 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-
-    <ion-button fill="outline" slot="end" color="dark" (click)="goToArticles()">Retour</ion-button>
-
-    <div id="content" class="center">
-        <ion-spinner name="circles"></ion-spinner>
+    <div class="center fullsize">
+        <ion-button expand="full" fill="outline" color="dark" (click)="goToArticles()">Retour</ion-button>
+    
+        <div id="content">
+            {{content}}
+            <ion-spinner name="circles"></ion-spinner>
+        </div>
     </div>
 
 </ion-content>
