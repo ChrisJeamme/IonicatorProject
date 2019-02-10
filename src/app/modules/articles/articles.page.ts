@@ -102,40 +102,34 @@ export class ArticlesPage implements OnInit
             if(toggle.checked)
             {
                 // To save
-                console.log("To Save")
-                this.articlesService.persistAnArticle(article, this.enableSaveToggle);
+                this.articlesService.persistAnArticle(article, this.disableSaveToggle);
             }
             else
             {
                 // To delete
-                console.log("To Delete")
-                this.articlesService.deleteAnArticle(article, this.disableSaveToggle);
+                this.articlesService.deleteAnArticle(article, this.enableSaveToggle);
             }
-        }
-        console.log("article "+article)
-    }
-
-    activeSaveButton(id)
-    {
-        let button:HTMLButtonElement = document.querySelector(".save_button_"+id+"");
-
-        if(button!=undefined)
-            button.disabled = true;
-        else
-        {
-            this.presentAlert("Erreur","","Erreur : Id du bouton de sauvegarde introuvable");
-            console.error("Erreur : Id du bouton de sauvegarde introuvable");
         }
     }
 
     enableSaveToggle(id)
     {
-        console.log("enableToggle")
+        console.log("Error: Impossible to delete the article, revert the toggle")
+        let toggle:HTMLIonToggleElement = document.querySelector(".save_toggle_"+id);
+        if(toggle != undefined)
+        {
+            toggle.checked = true;
+        }
     }
-
+    
     disableSaveToggle(id)
     {
-        console.log("disableToggle")
+        console.log("Error: Impossible to save the article, revert the toggle")
+        let toggle:HTMLIonToggleElement = document.querySelector(".save_toggle_"+id);
+        if(toggle != undefined)
+        {
+            toggle.checked = false;
+        }
     }
 
     tenArticles()
