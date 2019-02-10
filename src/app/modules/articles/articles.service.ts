@@ -1,6 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Storage } from "@ionic/storage";
+import { ArticlePage } from "../article/article.page";
+import { ArticlesPage } from "./articles.page";
 
 @Injectable()
 export class ArticlesService
@@ -21,78 +23,73 @@ export class ArticlesService
 
     persistAnArticle(article, callback)
     {
-        if(!this.articleStored(article))
-        {
-            this.storage.get("articles").then(
-                articles =>
-                {
-                    if(articles == undefined || articles == null)
-                        articles = Array<any>();
+        this.storage.get("articles").then(
+            articles =>
+            {
+                if(articles == undefined || articles == null)
+                    articles = Array<any>();
 
-                    articles.push(article);
-                    console.log("Nouvel article ajouté au cache");
+                articles.push(article);
+                console.log("Nouvel article ajouté au cache");
 
-                    this.storage.set("articles",articles);
-                }
-            );
-        }
-        else
-        {            
-            callback(article.id);
-        }
+                this.storage.set("articles",articles);
+            }
+        ); 
     }
 
     deleteAnArticle(articleToDelete, callback)
-    {
-        if(!this.articleStored(articleToDelete)) //TODO A modifier après avoir fait la fonction
-        {
-            this.storage.get("articles").then(
-                articles =>
-                {
-                    if(articles == undefined || articles == null)
-                        callback(articleToDelete.id);
-
-                    let deleted = false;
-                    for(let article in articles)
-                    {
-                        if(articles[article].id == articleToDelete.id)
-                        {
-                            articles.splice(article,article);
-                            console.log("Article supprimé du cache");
-                            deleted = true;
-                        }
-                    }
-                    if(!deleted)
-                        callback(articleToDelete.id);
-                    
-                    this.storage.set("articles",articles);
-                }
-            );
-        }
-        else
-        {
-            callback(articleToDelete.id);
-        }
-    }
-
-    articleStored(articleToTest)
     {
         this.storage.get("articles").then(
             articles =>
             {
                 if(articles == undefined || articles == null)
-                    return false;
+                {
+                    callback(articleToDelete.id);
+                    presentAlert("Erreur","Suppression","Impossible de supprimer l'article");
+                }
 
                 let deleted = false;
                 for(let article in articles)
                 {
-                    if(articles[article].id == articleToTest.id)
+                    if(articles[article].id == articleToDelete.id)
                     {
-                        return true;
+                        articles.splice(article,article);
+                        console.log("Article supprimé du cache");
+                        deleted = true;
                     }
                 }
+                if(!deleted)
+                {
+                    callback(articleToDelete.id);
+                    presentAlert("Erreur","Suppression","Impossible de supprimer l'article");
+                }
+                
+                this.storage.set("articles",articles);
             }
         );
+    }
+
+    articleStored(articleToTest)
+    {
+        if(articleToTest == undefined || articleToTest == null)
+        {
+            return false;
+        }
+
+        this.storage.get("articles").then(
+        articles =>
+        {
+            
+            if(articles == undefined || articles == null)
+                return false;
+
+
+            for(let article in articles)
+            {
+                if(articles[article].id == articleToTest.id)
+                    return true;
+            }
+        });
     }
 
     persistArticles(articles)

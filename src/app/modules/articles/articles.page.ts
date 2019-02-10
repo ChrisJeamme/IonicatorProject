@@ -15,6 +15,7 @@ export class ArticlesPage implements OnInit
 
     public articles: Array<any>;
     public alert: any;
+    public offlineMode: boolean = false;
 
     private NUMBER_OF_ARTICLE_ON_MAIN_PAGE = 10;
 
@@ -41,7 +42,7 @@ export class ArticlesPage implements OnInit
             (data: Array<any>) =>
             {
                 // Récupération des articles distants
-                this.articles = data;
+                this.articles = data.splice(this.NUMBER_OF_ARTICLE_ON_MAIN_PAGE);
 
                 // Coche les articles déjà enregistrés
                 this.articlesService.getArticlesFromStorage().then(
@@ -64,6 +65,8 @@ export class ArticlesPage implements OnInit
                 this.articlesService.getArticlesFromStorage().then(
                     offlineArticles =>
                     {
+                        this.offlineMode = true;
+
                         if(offlineArticles == null)
                         {
                             console.log("(Mode offline) Aucun article trouvé dans le cache")
@@ -81,10 +84,6 @@ export class ArticlesPage implements OnInit
                 );
             }
         );
-
-
-        // document.querySelector(".save_button").onClick(console.log("a"))
-        // (click)="saveArticle(article)"
     }
 
     goToArticle(id: string)
@@ -102,48 +101,36 @@ export class ArticlesPage implements OnInit
             if(toggle.checked)
             {
                 // To save
+                console.log("Nouvel article à sauvegarder")
                 this.articlesService.persistAnArticle(article, this.disableSaveToggle);
             }
             else
             {
                 // To delete
+                console.log("Nouvel article à supprimer")
                 this.articlesService.deleteAnArticle(article, this.enableSaveToggle);
             }
         }
     }
 
+    // Revert the toggle
     enableSaveToggle(id)
     {
-        console.log("Error: Impossible to delete the article, revert the toggle")
         let toggle:HTMLIonToggleElement = document.querySelector(".save_toggle_"+id);
         if(toggle != undefined)
         {
-            toggle.checked = true;
+            // toggle.checked = true;
         }
     }
     
+    // Revert the toggle
     disableSaveToggle(id)
     {
-        console.log("Error: Impossible to save the article, revert the toggle")
         let toggle:HTMLIonToggleElement = document.querySelector(".save_toggle_"+id);
         if(toggle != undefined)
         {
-            toggle.checked = false;
+            // toggle.checked = false;
         }
-    }
-
-    tenArticles()
-    {
-        let articles;
-        try
-        {
-            articles = this.articles.slice(this.NUMBER_OF_ARTICLE_ON_MAIN_PAGE);
-        }
-        catch(error)
-        {
-            // console.error(error);
-        }
-        return articles;
     }
 
     logout()

@@ -12,17 +12,16 @@
     <section>
         <h2 class="alert">{{alert}}</h2>
         
-        <div *ngFor="let article of tenArticles()">
+        <div *ngFor="let article of articles">
             <ion-card id="article_{{article.id}}">
                 <ion-item>
                     <ion-label>{{article.title}}</ion-label>
-                    <ion-item>
-                        <ion-label><ion-icon name="save"></ion-icon></ion-label> 
-                        <ion-toggle (ionChange)="toggleSaveArticle(article)" color="danger" class="save_toggle save_toggle_{{article.id}}"></ion-toggle>
-                    </ion-item>
-                    <!-- <ion-button (click)="saveArticle(article)" class="save_button save_button_{{article.id}}" action color="secondary" slot="end">
-                        <ion-icon name="save"></ion-icon>
-                    </ion-button> -->
+                    <div *ngIf="!offlineMode">
+                        <ion-item>
+                            <ion-label><ion-icon name="save"></ion-icon></ion-label> 
+                            <ion-toggle (ionChange)="toggleSaveArticle(article)" color="danger" class="save_toggle save_toggle_{{article.id}}"></ion-toggle>
+                        </ion-item>
+                    </div>
                     <ion-button (click)="goToArticle(article.id)" color="danger" slot="end">
                         <ion-icon name="arrow-forward"></ion-icon>
                     </ion-button>
