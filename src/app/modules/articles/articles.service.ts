@@ -14,6 +14,11 @@ export class ArticlesService
         return this.httpclient.get("https://jsonplaceholder.typicode.com/posts");
     }
 
+    getArticlesFromStorage()
+    {
+        return this.storage.get("articles");
+    }
+
     persistArticles(articles)
     {
         return this.storage.set("articles", articles.sort((a,b)=>a.id>b.id));
@@ -21,7 +26,6 @@ export class ArticlesService
 
     getArticle(id, success, error)
     {
-        // TODO : requete à l'api, si pas de réponse ou incorrect je cherche dans les articles stockés
         this.storage.get("articles").then(
         articles=>
         {

@@ -10,7 +10,8 @@
 </ion-header>
 <ion-content>
     <section>
-
+        <h2 class="alert">{{alert}}</h2>
+        
         <div *ngFor="let article of tenArticles()">
             <ion-card id="article_{{article.id}}">
                 <ion-item>
