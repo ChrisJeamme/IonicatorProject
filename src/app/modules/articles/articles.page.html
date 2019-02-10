@@ -16,7 +16,11 @@
             <ion-card id="article_{{article.id}}">
                 <ion-item>
                     <ion-label>{{article.title}}</ion-label>
-                    <ion-button action color="secondary" slot="end">
+                        <!-- <ion-item>
+                            <ion-label>Save</ion-label>
+                            <ion-toggle color="secondary" class="save_button save_button_{{article.id}}"></ion-toggle>
+                        </ion-item> -->
+                    <ion-button (click)="saveArticle(article)" class="save_button save_button_{{article.id}}" action color="secondary" slot="end">
                         <ion-icon name="save"></ion-icon>
                     </ion-button>
                     <ion-button (click)="goToArticle(article.id)" color="primary" slot="end">
