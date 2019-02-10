@@ -50,7 +50,20 @@ export class ArticlesService
         return this.storage.set("articles", articles.sort((a,b)=>a.id>b.id));
     }
 
-    getArticle(id, success, error)
+    getArticleFromAPI(id, success, error)
+    {
+        this.httpclient.get("https://jsonplaceholder.typicode.com/posts/"+id).subscribe(
+            article =>
+            {
+                if(article == null || article == undefined)
+                    error();
+                else
+                    success(article);
+            }
+        );
+    }
+
+    getArticleFromStorage(id, success, error)
     {
         this.storage.get("articles").then(
         articles=>

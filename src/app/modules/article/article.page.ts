@@ -26,7 +26,8 @@ export class ArticlePage implements OnInit
             {
                 console.log("Erreur : Pas d'id défini")
             }
-            this.articlesService.getArticle(id, this.displayArticle, this.displayErrorGetArticle);
+            console.log(id)
+            this.articlesService.getArticleFromAPI(id, this.displayArticle, this.displayErrorGetArticle);
         });
     }
 

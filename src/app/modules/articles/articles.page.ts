@@ -56,7 +56,7 @@ export class ArticlesPage implements OnInit
             },
             error =>
             {
-                let offlineArticles = this.articlesService.getArticlesFromStorage().then(
+                this.articlesService.getArticlesFromStorage().then(
                     offlineArticles =>
                     {
                         if(offlineArticles == null)
@@ -72,9 +72,6 @@ export class ArticlesPage implements OnInit
                             this.alert = "Mode hors-ligne";
                             this.articles = offlineArticles;
                         }
-                    },
-                    error =>
-                    {
                     }
                 );
             }
