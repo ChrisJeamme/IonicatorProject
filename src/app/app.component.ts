@@ -1,22 +1,3 @@
-<<<<<<< HEAD
-import {Component, OnInit} from "@angular/core";
-
-@Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.scss'],
-  providers: [],
-})
-export class AppComponent implements OnInit {
-
-  constructor() {
-
-  }
-
-  ngOnInit() {
-
-  }
-=======
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 
@@ -53,5 +34,4 @@ export class AppComponent implements OnInit
         localStorage.removeItem('identifiant');
         this.router.navigateByUrl("login");
     }
->>>>>>> groupeC_BRUYERE-JEAMME_final
 }
