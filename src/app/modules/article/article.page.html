@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-toolbar color="dark">
+        <div class="flex space-around header align-center">
+            <span class="page-title">Article</span>
+            <ion-button color="light" fill="outline" (click)="logout()">
+                <ion-icon name="log-out"></ion-icon> Déconnexion
+            </ion-button>
+        </div>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div class="center fullsize">
+        <ion-button expand="full" fill="outline" color="dark" (click)="goToArticles()">Retour</ion-button>
+    
+        <div id="content">
+            {{content}}
+            <ion-spinner name="circles"></ion-spinner>
+        </div>
+    </div>
+
+</ion-content>

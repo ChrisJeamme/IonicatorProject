@@ -1,18 +1,19 @@
-import { Page1Service } from './../pages/page1/page1.service';
-import { MainService } from './main.service';
+import { MainService } from "./main.service";
 
-describe('MainService', ()=>
+describe('Service: Main Service', () =>
 {
     let service: MainService;
 
-    beforeEach(()=>{
-        service = new MainService();
-    })
-
-    it('should test', ()=>
+    beforeEach(() =>
     {
-        let text = service.showText();
+        service = new MainService();
+    }
+    );
 
-        expect(text).toMatch("Mon texte");
+    it('should get status', () =>
+    {
+        let status = service.getStatus();
+        expect(status).toEqual("Mon Status");
     });
+
 });

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "app",
   "short_name": "app",
   "theme_color": "#1976d2",
@@ -7,3 +8,13 @@
   "scope": "/",
   "start_url": "/"
 }
+=======
+    "name": "app",
+    "short_name": "app",
+    "theme_color": "#1976d2",
+    "background_color": "#fafafa",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/"
+}
+>>>>>>> groupeC_BRUYERE-JEAMME_final

@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-toolbar color="dark">
+        <div class="flex space-around header align-center">
+            <span class="page-title">Enregistrement</span>
+        </div>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-row class="center-layout">
+        <ion-col text-center>
+            <ion-item>
+                <ion-icon color="dark" name="person"></ion-icon>
+                <ion-label color="dark" position="floating"> Votre pseudo</ion-label>
+                <ion-input type="texte" #name></ion-input>
+            </ion-item>
+            <ion-button color="dark" fill="outline" (click)="validateName(name.value)">Valider</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-content>

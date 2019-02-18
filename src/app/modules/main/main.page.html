@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <ion-header>
   <ion-toolbar>
     <span>Main Page</span>
@@ -9,3 +10,29 @@
   </section>
   <ion-button (click)="goToPage1()">Aller à la page 1</ion-button>
 </ion-content>
+=======
+<div>
+    <ion-header>
+        <ion-toolbar>
+            <span>Main Page</span>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content text-center class="maxheight">
+    
+        <div *ngIf="!connected()">
+            Non connecté !
+            <ion-button (click)="goToLogin()">Aller à la page login</ion-button>
+        </div>
+        <div *ngIf="connected()">
+            Connecté !
+            <section>
+                <h4>Bienvenue sur la main page {{identifiant}}</h4>
+            </section>
+            <h2>Liens de test</h2>
+            <ion-button (click)="goToPage1()">Aller à la page 1</ion-button>
+            <ion-button (click)="logout()">Déconnexion</ion-button>
+        </div>
+    
+    </ion-content>
+</div>
+>>>>>>> groupeC_BRUYERE-JEAMME_final
