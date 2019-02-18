@@ -34,6 +34,3 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 documentation/
 package-lock.json
-
-cert.pem
-key.pem
